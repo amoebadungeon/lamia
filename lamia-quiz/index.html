@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LAMIA Learn — Hands-Free Assistive Quiz</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="brand">
+        <span class="logo-badge">LAMIA</span>
+        <span class="app-title">Hands-Free Learning Hub</span>
+      </div>
+      <div class="controls-panel">
+        <button id="toggleSpeechBtn" class="pill-btn active" title="Toggle Voice Read-Aloud">
+          🔊 <span id="speechStatus">Voice: ON</span>
+        </button>
+        <button id="toggleScanBtn" class="pill-btn" title="Toggle Automatic Tab Scanning">
+          ⏱️ <span id="scanStatus">Auto-Scan: OFF</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Status & Progress -->
+    <section class="progress-section">
+      <div class="progress-bar-container">
+        <div id="progressBar" class="progress-bar"></div>
+      </div>
+      <div class="progress-info">
+        <span id="questionCounter">Question 1 / 10</span>
+        <span id="subjectBadge" class="subject-badge">MATHEMATICS</span>
+        <span id="scoreDisplay">Score: 0 / 10</span>
+      </div>
+    </section>
+
+    <!-- Main Quiz View -->
+    <main class="quiz-main" id="quizView">
+      <div class="question-card" id="questionCard">
+        <p class="question-text" id="questionText">Loading question...</p>
+      </div>
+
+      <!-- 4-Quadrant D-PAD Options Layout -->
+      <div class="dpad-grid" id="optionsContainer">
+        <!-- Option A (UP) -->
+        <div class="option-card" id="opt-0" data-index="0" data-direction="UP">
+          <div class="dpad-key-indicator">
+            <span class="arrow-symbol">⬆️</span>
+            <span class="key-label">UP</span>
+            <span class="choice-letter">A</span>
+          </div>
+          <div class="choice-content" id="opt-text-0">Option A</div>
+          <div class="focus-marker">● FOCUSED</div>
+        </div>
+
+        <!-- Option B (LEFT) -->
+        <div class="option-card" id="opt-1" data-index="1" data-direction="LEFT">
+          <div class="dpad-key-indicator">
+            <span class="arrow-symbol">⬅️</span>
+            <span class="key-label">LEFT</span>
+            <span class="choice-letter">B</span>
+          </div>
+          <div class="choice-content" id="opt-text-1">Option B</div>
+          <div class="focus-marker">● FOCUSED</div>
+        </div>
+
+        <!-- Option C (RIGHT) -->
+        <div class="option-card" id="opt-2" data-index="2" data-direction="RIGHT">
+          <div class="dpad-key-indicator">
+            <span class="arrow-symbol">➡️</span>
+            <span class="key-label">RIGHT</span>
+            <span class="choice-letter">C</span>
+          </div>
+          <div class="choice-content" id="opt-text-2">Option C</div>
+          <div class="focus-marker">● FOCUSED</div>
+        </div>
+
+        <!-- Option D (DOWN) -->
+        <div class="option-card" id="opt-3" data-index="3" data-direction="DOWN">
+          <div class="dpad-key-indicator">
+            <span class="arrow-symbol">⬇️</span>
+            <span class="key-label">DOWN</span>
+            <span class="choice-letter">D</span>
+          </div>
+          <div class="choice-content" id="opt-text-3">Option D</div>
+          <div class="focus-marker">● FOCUSED</div>
+        </div>
+      </div>
+
+      <!-- Auto Scan Timer Indicator -->
+      <div id="scanTimerBarContainer" class="scan-timer-container hide">
+        <div id="scanTimerBar" class="scan-timer-bar"></div>
+      </div>
+
+      <!-- Dynamic Feedback Banner -->
+      <div id="feedbackBanner" class="feedback-banner hide">
+        <span id="feedbackIcon" class="feedback-icon">✓</span>
+        <span id="feedbackText" class="feedback-text">Correct!</span>
+      </div>
+    </main>
+
+    <!-- Completion / Results View -->
+    <section class="results-view hide" id="resultsView">
+      <div class="results-card">
+        <div class="trophy-icon">🏆</div>
+        <h2>Quiz Completed!</h2>
+        <p class="final-score-text" id="finalScoreText">You scored 10 out of 10</p>
+        <p class="results-subtitle">Demonstrating Hands-Free Learning with LAMIA Assistive Controller</p>
+        <div class="action-buttons">
+          <button id="restartBtn" class="primary-btn">
+            🔄 Restart Quiz <span class="btn-hint">(Press ENTER)</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Controller Visual Guide Footer -->
+    <footer class="controller-guide">
+      <div class="guide-item">
+        <span class="guide-key">⬆️ ⬅️ ➡️ ⬇️ Head Tilt / D-PAD</span>
+        <span class="guide-action">Move / Select Highlight</span>
+      </div>
+      <div class="guide-divider">•</div>
+      <div class="guide-item">
+        <span class="guide-key">👄 Mouth Open / ENTER</span>
+        <span class="guide-action">Confirm Choice</span>
+      </div>
+      <div class="guide-divider">•</div>
+      <div class="guide-item">
+        <span class="guide-key">⌨️ TAB</span>
+        <span class="guide-action">Auto-Cycle Options</span>
+      </div>
+    </footer>
+  </div>
+
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

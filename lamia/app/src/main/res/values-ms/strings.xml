@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LAMIA</string>
+
+    <!-- Tracking Overlay -->
+    <string name="tracking_title">Penjejakan Wajah AI</string>
+    <string name="tracking_searching">Mencari Wajah...</string>
+    <string name="tracking_active_format">Menjejak (P: %1$d°, Y: %2$d°, R: %3$d°)</string>
+    <string name="btn_calibrate_rest">Kalibrasi Rehat</string>
+    <string name="triggers_label">Pemicu</string>
+    <string name="state_open">BUKA</string>
+    <string name="state_closed">TUTUP</string>
+    <string name="state_smiling">😊 SENYUM</string>
+    <string name="state_neutral">😐 BIASA</string>
+    <string name="state_locked">DIKUNCI</string>
+
+    <!-- Navigation Tabs -->
+    <string name="tab_remote">Alat Kawalan Pintar</string>
+    <string name="tab_aac">Pertuturan Pantas (AAC)</string>
+
+    <!-- Status Pills -->
+    <string name="bt_status_ready">● HID Sedia (Tekan untuk Sambung)</string>
+    <string name="bt_status_not_registered">○ HID Belum Didaftar</string>
+    <string name="bt_status_connected">● Bersambung: %1$s</string>
+    <string name="bt_status_tap_connect">○ Tekan untuk Sambung Peranti</string>
+    <string name="lock_status_locked">🔒 Dikunci (Senyum)</string>
+    <string name="lock_status_active">🔓 Aktif (Senyum)</string>
+
+    <!-- Guidance Bar -->
+    <string name="guidance_remote_default">Kawalan Terus: Condongkan kepala untuk navigasi • Buka mulut untuk OK/Enter</string>
+    <string name="guidance_remote_active">Kawalan Terus: Angguk untuk NAV • Condong Kanan ➡️ KEMBALI • Condong Kiri ⬅️ MAIN/HENTI • Mulut: OK</string>
+    <string name="guidance_aac_default">D-PAD AAC: ⬆️ Makan/Minum • ⬇️ Kecemasan • ⬅️ Tandas/Selesa • ➡️ Kasih Sayang</string>
+    <string name="guidance_locked">🔒 Kandungan Sedang Dimainkan: Kawalan Dikunci • Senyum untuk Buka Kunci</string>
+    <string name="guidance_aac_aim_prompt">🎯 Condongkan kepala: ⬆️ Makan • ⬇️ Kecemasan • ⬅️ Tandas • ➡️ Sayang</string>
+
+    <!-- AAC Cards -->
+    <string name="aac_card_eat_title">MAKAN / MINUM</string>
+    <string name="aac_card_eat_sub">⬆️ Lapar &amp; Dahaga</string>
+    <string name="aac_card_toilet_title">TANDAS / SELESA</string>
+    <string name="aac_card_toilet_sub">⬅️ Bantuan Fizikal</string>
+    <string name="aac_card_love_title">KASIH SAYANG</string>
+    <string name="aac_card_love_sub">➡️ Terima Kasih ❤️</string>
+    <string name="aac_card_help_title">KECEMASAN</string>
+    <string name="aac_card_help_sub">⬇️ Tolong Segera 🚨</string>
+    <string name="aac_center_aim">PILIH</string>
+
+    <!-- Remote & D-Pad Buttons -->
+    <string name="btn_repeat_voice">🔁 Ulang Suara</string>
+    <string name="btn_return_remote">📺 Kembali ke Alat Kawalan</string>
+    <string name="btn_test_mouth">Uji Buka Mulut</string>
+    <string name="btn_dpad_back">KEMBALI</string>
+    <string name="btn_dpad_home">UTAMA</string>
+    <string name="btn_dpad_ok">OK</string>
+
+    <!-- Toasts & Notifications -->
+    <string name="toast_rest_calibrated">Kedudukan rehat berjaya dikalibrasi!</string>
+    <string name="toast_bt_connected">Bluetooth HID Bersambung ke %1$s!</string>
+    <string name="toast_connecting">Menyambung ke %1$s...</string>
+    <string name="toast_discoverable">Telefon boleh dikesan selama 5 minit. Sambung dari PC/TV anda!</string>
+    <string name="toast_aac_activated">Mod Suara AAC Diaktifkan (5 Pandangan Dikesan)!</string>
+    <string name="toast_remote_activated">Mod Alat Kawalan Pintar Diaktifkan (5 Pandangan)!</string>
+    <string name="toast_locked">🔒 Alat Kawalan Dikunci! Nikmati tontonan anda.</string>
+    <string name="toast_unlocked">🔓 Alat Kawalan Dibuka! Navigasi aktif.</string>
+    <string name="toast_camera_perm">Kebenaran kamera diperlukan untuk penjejakan kepala</string>
+    <string name="camera_start_error">Gagal memulakan kamera hadapan: %1$s</string>
+
+    <!-- Dialogs -->
+    <string name="dialog_bt_title">Sambungan Bluetooth HID</string>
+    <string name="dialog_bt_last_connected">★ %1$s (Terakhir Bersambung)</string>
+    <string name="dialog_bt_discoverable">Jadikan Telefon Boleh Dikesan (Padankan Peranti Baru)</string>
+    <string name="dialog_cancel">Batal</string>
+
+    <!-- Gaze Sequence -->
+    <string name="gaze_progress_aac">👁️ Pengaktifan AAC: %1$d / 5 pandangan kiri</string>
+    <string name="gaze_progress_remote">👁️ Pengaktifan Kawalan: %1$d / 5 pandangan kanan</string>
+    <string name="action_feedback_format">%1$s → %2$s</string>
+</resources>

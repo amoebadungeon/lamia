@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- LAMIA Brand Colors -->
+    <color name="lamia_green">#FF4CAF50</color>
+    <color name="lamia_yellow">#FFFFC107</color>
+    <color name="lamia_blue">#FF2196F3</color>
+    <color name="lamia_red">#FFF44336</color>
+
+    <!-- Base -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="dark_bg">#FF121212</color>
+</resources>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LAMIA</string>
+
+    <!-- Tracking Overlay -->
+    <string name="tracking_title">AI Face Tracking</string>
+    <string name="tracking_searching">Searching Face...</string>
+    <string name="tracking_active_format">Tracking (P: %1$d°, Y: %2$d°, R: %3$d°)</string>
+    <string name="btn_calibrate_rest">Calibrate Rest</string>
+    <string name="triggers_label">Triggers</string>
+    <string name="state_open">OPEN</string>
+    <string name="state_closed">CLOSED</string>
+    <string name="state_smiling">😊 SMILE</string>
+    <string name="state_neutral">😐 NEUTRAL</string>
+    <string name="state_locked">LOCKED</string>
+
+    <!-- Navigation Tabs -->
+    <string name="tab_remote">Smart Remote</string>
+    <string name="tab_aac">Quick Speak (AAC)</string>
+
+    <!-- Status Pills -->
+    <string name="bt_status_ready">● HID Ready (Tap to Connect)</string>
+    <string name="bt_status_not_registered">○ HID Not Registered</string>
+    <string name="bt_status_connected">● Connected: %1$s</string>
+    <string name="bt_status_tap_connect">○ Tap to Connect Device</string>
+    <string name="lock_status_locked">🔒 Locked (Smile)</string>
+    <string name="lock_status_active">🔓 Active (Smile)</string>
+
+    <!-- Guidance Bar -->
+    <string name="guidance_remote_default">Direct Remote: Tilt head to navigate • Open mouth for OK/Enter</string>
+    <string name="guidance_remote_active">Direct Remote: Nod to NAV • Tilt Right ➡️ BACK • Tilt Left ⬅️ PLAY-PAUSE • Mouth: OK</string>
+    <string name="guidance_aac_default">AAC D-PAD: ⬆️ Makan/Minum • ⬇️ Kecemasan • ⬅️ Tandas/Selesa • ➡️ Kasih Sayang</string>
+    <string name="guidance_locked">🔒 Content Playing: Controls Locked • Smile to Unlock</string>
+    <string name="guidance_aac_aim_prompt">🎯 Tilt head to choose: ⬆️ Makan • ⬇️ Kecemasan • ⬅️ Tandas • ➡️ Sayang</string>
+
+    <!-- AAC Cards -->
+    <string name="aac_card_eat_title">MAKAN / MINUM</string>
+    <string name="aac_card_eat_sub">⬆️ Lapar &amp; Dahaga</string>
+    <string name="aac_card_toilet_title">TANDAS / SELESA</string>
+    <string name="aac_card_toilet_sub">⬅️ Bantuan Fizikal</string>
+    <string name="aac_card_love_title">KASIH SAYANG</string>
+    <string name="aac_card_love_sub">➡️ Terima Kasih ❤️</string>
+    <string name="aac_card_help_title">KECEMASAN</string>
+    <string name="aac_card_help_sub">⬇️ Tolong Segera 🚨</string>
+    <string name="aac_center_aim">AIM</string>
+
+    <!-- Remote & D-Pad Buttons -->
+    <string name="btn_repeat_voice">🔁 Repeat Voice</string>
+    <string name="btn_return_remote">📺 Back to Remote</string>
+    <string name="btn_test_mouth">Test Mouth Open</string>
+    <string name="btn_dpad_back">BACK</string>
+    <string name="btn_dpad_home">HOME</string>
+    <string name="btn_dpad_ok">OK</string>
+
+    <!-- Toasts & Notifications -->
+    <string name="toast_rest_calibrated">Resting position calibrated!</string>
+    <string name="toast_bt_connected">Bluetooth HID Connected to %1$s!</string>
+    <string name="toast_connecting">Connecting to %1$s...</string>
+    <string name="toast_discoverable">Phone is now discoverable for 5 minutes. Connect from your PC/TV!</string>
+    <string name="toast_aac_activated">AAC Voice Mode Activated (5 Gazes Detected)!</string>
+    <string name="toast_remote_activated">Smart Remote Mode Activated (5 Gazes)!</string>
+    <string name="toast_locked">🔒 Controller Locked! Enjoy your content.</string>
+    <string name="toast_unlocked">🔓 Controller Unlocked! Navigation active.</string>
+    <string name="toast_camera_perm">Camera permission needed for head tracking</string>
+    <string name="camera_start_error">Failed to start front camera: %1$s</string>
+
+    <!-- Dialogs -->
+    <string name="dialog_bt_title">Bluetooth HID Connection</string>
+    <string name="dialog_bt_last_connected">★ %1$s (Last Connected)</string>
+    <string name="dialog_bt_discoverable">Make Phone Discoverable (Pair New Device)</string>
+    <string name="dialog_cancel">Cancel</string>
+
+    <!-- Gaze Sequence -->
+    <string name="gaze_progress_aac">👁️ AAC Activation: %1$d / 5 gazes left</string>
+    <string name="gaze_progress_remote">👁️ Remote Activation: %1$d / 5 gazes right</string>
+    <string name="action_feedback_format">%1$s → %2$s</string>
+</resources>

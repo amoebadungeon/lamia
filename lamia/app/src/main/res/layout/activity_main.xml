@@ -1,0 +1,644 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F1F5F9">
+
+    <!-- CAMERA PREVIEW VIEWPORT (Top section) -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cameraCard"
+        android:layout_width="0dp"
+        android:layout_height="250dp"
+        android:layout_margin="12dp"
+        app:cardCornerRadius="28dp"
+        app:cardElevation="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#0F172A">
+
+            <androidx.camera.view.PreviewView
+                android:id="@+id/cameraPreview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <!-- AI Face Tracking Status Pill -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|start"
+                android:layout_margin="14dp"
+                android:background="@drawable/bg_glass_pill"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="6dp">
+
+                <View
+                    android:id="@+id/dotTracking"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="6dp"
+                    android:background="@drawable/bg_glass_pill"
+                    android:backgroundTint="#10B981" />
+
+                <TextView
+                    android:id="@+id/tvTrackingStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tracking_title"
+                    android:textColor="#0F172A"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Calibration Button -->
+            <Button
+                android:id="@+id/btnCalibrate"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_gravity="top|end"
+                android:layout_margin="12dp"
+                android:backgroundTint="#CCFFFFFF"
+                android:contentDescription="@string/btn_calibrate_rest"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:paddingHorizontal="12dp"
+                android:text="@string/btn_calibrate_rest"
+                android:textColor="#0F172A"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <!-- Facial Triggers Live Meter (Mouth Open & Smile Lock) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_margin="10dp"
+                android:background="@drawable/bg_glass_pill"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="7dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/triggers_label"
+                    android:textColor="#1E293B"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <ProgressBar
+                    android:id="@+id/mouthProgressBar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="70dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="6dp"
+                    android:max="100"
+                    android:progress="20"
+                    android:progressTint="#0EA5E9" />
+
+                <TextView
+                    android:id="@+id/tvMouthState"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_glass_pill"
+                    android:backgroundTint="#E2E8F0"
+                    android:paddingHorizontal="7dp"
+                    android:paddingVertical="2dp"
+                    android:text="@string/state_closed"
+                    android:textColor="#475569"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvSmileState"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/bg_glass_pill"
+                    android:backgroundTint="#E2E8F0"
+                    android:paddingHorizontal="7dp"
+                    android:paddingVertical="2dp"
+                    android:text="@string/state_neutral"
+                    android:textColor="#475569"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </FrameLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- MAIN CONTROL PANEL (Frosted Glass Card) -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/panelCard"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="12dp"
+        app:cardBackgroundColor="#CCFFFFFF"
+        app:cardCornerRadius="32dp"
+        app:cardElevation="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cameraCard">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- MODE SELECTOR (Segmented Tab) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:background="@drawable/bg_glass_pill"
+                android:backgroundTint="#E2E8F0"
+                android:orientation="horizontal"
+                android:padding="3dp">
+
+                <Button
+                    android:id="@+id/tabRemote"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:backgroundTint="#FFFFFF"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:text="@string/tab_remote"
+                    android:textColor="#0F172A"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:cornerRadius="50dp" />
+
+                <Button
+                    android:id="@+id/tabAac"
+                    style="@style/Widget.Material3.Button.TextButton"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:text="@string/tab_aac"
+                    android:textColor="#64748B"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:cornerRadius="50dp" />
+            </LinearLayout>
+
+            <!-- ================= MODE 1: D-PAD REMOTE ================= -->
+            <LinearLayout
+                android:id="@+id/containerRemote"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingTop="8dp">
+
+                <!-- Status Bar: Bluetooth & Lock State -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <!-- Bluetooth Status Tag -->
+                    <TextView
+                        android:id="@+id/tvBluetoothStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/bg_glass_pill"
+                        android:backgroundTint="#F8FAFC"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:paddingHorizontal="12dp"
+                        android:paddingVertical="5dp"
+                        android:text="@string/bt_status_tap_connect"
+                        android:textColor="#059669"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <!-- Lock / Unlock Status Pill (Smile to Toggle) -->
+                    <TextView
+                        android:id="@+id/tvLockStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_glass_pill"
+                        android:backgroundTint="#F0FDF4"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:paddingHorizontal="12dp"
+                        android:paddingVertical="5dp"
+                        android:text="@string/lock_status_active"
+                        android:textColor="#16A34A"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- D-PAD Cross Grid -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/containerDpad"
+                    android:layout_width="220dp"
+                    android:layout_height="220dp"
+                    android:layout_marginVertical="12dp">
+
+                    <!-- UP BUTTON -->
+                    <ImageButton
+                        android:id="@+id/btnUp"
+                        android:layout_width="66dp"
+                        android:layout_height="66dp"
+                        android:background="@drawable/bg_dpad_button"
+                        android:contentDescription="DPAD UP"
+                        android:src="@drawable/ic_arrow_up"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <!-- LEFT BUTTON -->
+                    <ImageButton
+                        android:id="@+id/btnLeft"
+                        android:layout_width="66dp"
+                        android:layout_height="66dp"
+                        android:background="@drawable/bg_dpad_button"
+                        android:contentDescription="DPAD LEFT"
+                        android:src="@drawable/ic_arrow_left"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <!-- OK / SELECT BUTTON -->
+                    <Button
+                        android:id="@+id/btnOk"
+                        android:layout_width="66dp"
+                        android:layout_height="66dp"
+                        android:background="@drawable/bg_dpad_button"
+                        android:contentDescription="@string/btn_dpad_ok"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="@string/btn_dpad_ok"
+                        android:textColor="#0F172A"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:cornerRadius="20dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <!-- RIGHT BUTTON -->
+                    <ImageButton
+                        android:id="@+id/btnRight"
+                        android:layout_width="66dp"
+                        android:layout_height="66dp"
+                        android:background="@drawable/bg_dpad_button"
+                        android:contentDescription="DPAD RIGHT"
+                        android:src="@drawable/ic_arrow_right"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <!-- DOWN BUTTON -->
+                    <ImageButton
+                        android:id="@+id/btnDown"
+                        android:layout_width="66dp"
+                        android:layout_height="66dp"
+                        android:background="@drawable/bg_dpad_button"
+                        android:contentDescription="DPAD DOWN"
+                        android:src="@drawable/ic_arrow_down"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!-- Back & Home Controls -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnBack"
+                        style="@style/Widget.Material3.Button.TonalButton"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="10dp"
+                        android:backgroundTint="#E2E8F0"
+                        android:contentDescription="@string/btn_dpad_back"
+                        android:text="@string/btn_dpad_back"
+                        android:textColor="#334155"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        app:cornerRadius="16dp" />
+
+                    <Button
+                        android:id="@+id/btnHome"
+                        style="@style/Widget.Material3.Button.TonalButton"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:backgroundTint="#E2E8F0"
+                        android:contentDescription="@string/btn_dpad_home"
+                        android:text="@string/btn_dpad_home"
+                        android:textColor="#334155"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        app:cornerRadius="16dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- ================= MODE 2: QUICK SPEAK (AAC D-PAD) ================= -->
+            <LinearLayout
+                android:id="@+id/containerAac"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingTop="8dp"
+                android:visibility="gone">
+
+                <!-- AAC D-PAD Cross Grid -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="220dp"
+                    android:layout_height="220dp"
+                    android:layout_marginVertical="12dp">
+
+                    <!-- UP: MAKAN / MINUM -->
+                    <LinearLayout
+                        android:id="@+id/cardEat"
+                        android:layout_width="68dp"
+                        android:layout_height="68dp"
+                        android:background="@drawable/bg_card_eat"
+                        android:clickable="true"
+                        android:contentDescription="@string/aac_card_eat_title"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="3dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:contentDescription="@string/aac_card_eat_title"
+                            android:src="@drawable/ic_eat" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/aac_card_eat_title"
+                            android:textColor="#B45309"
+                            android:textSize="9sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/aac_card_eat_sub"
+                            android:textColor="#92400E"
+                            android:textSize="7sp" />
+                    </LinearLayout>
+
+                    <!-- LEFT: TANDAS / SELESA -->
+                    <LinearLayout
+                        android:id="@+id/cardToilet"
+                        android:layout_width="68dp"
+                        android:layout_height="68dp"
+                        android:background="@drawable/bg_card_toilet"
+                        android:clickable="true"
+                        android:contentDescription="@string/aac_card_toilet_title"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="3dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:contentDescription="@string/aac_card_toilet_title"
+                            android:src="@drawable/ic_toilet" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/aac_card_toilet_title"
+                            android:textColor="#0369A1"
+                            android:textSize="9sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/aac_card_toilet_sub"
+                            android:textColor="#075985"
+                            android:textSize="7sp" />
+                    </LinearLayout>
+
+                    <!-- CENTER: SPEAK / TRIGGER -->
+                    <LinearLayout
+                        android:id="@+id/cardCenterSpeak"
+                        android:layout_width="68dp"
+                        android:layout_height="68dp"
+                        android:background="@drawable/bg_dpad_button"
+                        android:clickable="true"
+                        android:contentDescription="@string/aac_center_aim"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="3dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:contentDescription="@string/aac_center_aim"
+                            android:src="@drawable/ic_speak" />
+
+                        <TextView
+                            android:id="@+id/tvCenterSpeakLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/aac_center_aim"
+                            android:textColor="#0F172A"
+                            android:textSize="9sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <!-- RIGHT: KASIH SAYANG -->
+                    <LinearLayout
+                        android:id="@+id/cardLove"
+                        android:layout_width="68dp"
+                        android:layout_height="68dp"
+                        android:background="@drawable/bg_card_love"
+                        android:clickable="true"
+                        android:contentDescription="@string/aac_card_love_title"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="3dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:contentDescription="@string/aac_card_love_title"
+                            android:src="@drawable/ic_love" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/aac_card_love_title"
+                            android:textColor="#BE185D"
+                            android:textSize="9sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/aac_card_love_sub"
+                            android:textColor="#9D174D"
+                            android:textSize="7sp" />
+                    </LinearLayout>
+
+                    <!-- DOWN: KECEMASAN / HELP -->
+                    <LinearLayout
+                        android:id="@+id/cardHelp"
+                        android:layout_width="68dp"
+                        android:layout_height="68dp"
+                        android:background="@drawable/bg_card_help"
+                        android:clickable="true"
+                        android:contentDescription="@string/aac_card_help_title"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="3dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:contentDescription="@string/aac_card_help_title"
+                            android:src="@drawable/ic_help" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/aac_card_help_title"
+                            android:textColor="#B91C1C"
+                            android:textSize="9sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/aac_card_help_sub"
+                            android:textColor="#991B1B"
+                            android:textSize="7sp" />
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!-- Bottom Auxiliary Controls -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnRepeatVoice"
+                        style="@style/Widget.Material3.Button.TonalButton"
+                        android:layout_width="110dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="10dp"
+                        android:backgroundTint="#E2E8F0"
+                        android:contentDescription="@string/btn_repeat_voice"
+                        android:text="@string/btn_repeat_voice"
+                        android:textColor="#334155"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        app:cornerRadius="16dp" />
+
+                    <Button
+                        android:id="@+id/btnAacToRemote"
+                        style="@style/Widget.Material3.Button.TonalButton"
+                        android:layout_width="110dp"
+                        android:layout_height="40dp"
+                        android:backgroundTint="#E2E8F0"
+                        android:contentDescription="@string/btn_return_remote"
+                        android:text="@string/btn_return_remote"
+                        android:textColor="#334155"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        app:cornerRadius="16dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- BOTTOM GUIDANCE BAR & TEST TRIGGER -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvGuidance"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/guidance_remote_default"
+                    android:textColor="#64748B"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btnSimulateTrigger"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:backgroundTint="#0F172A"
+                    android:contentDescription="@string/btn_test_mouth"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:paddingHorizontal="12dp"
+                    android:text="@string/btn_test_mouth"
+                    android:textColor="#FFFFFF"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
