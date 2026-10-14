@@ -6,6 +6,10 @@
 [![ML Kit](https://img.shields.io/badge/AI-Google_ML_Kit_Vision-orange.svg)](https://developers.google.com/ml-kit)
 [![Bluetooth HID](https://img.shields.io/badge/Bluetooth-HID_Device_Profile-0077B5.svg)](https://source.android.com)
 
+<p align="center">
+  <img src="docs/images/banner.jpg" alt="LAMIA - AI Assistive Technology Banner" width="100%" />
+</p>
+
 > **Restoring autonomy, dignity, and communication for individuals with severe motor disabilities — at zero hardware cost.**
 
 ---
